@@ -29,6 +29,16 @@
       <button>+</button>
     </form>
     <div id="newErr" class="err"></div>
+    <details class="tools">
+      <summary>Kirim ke WhatsApp / Undang teman</summary>
+      <form id="waForm">
+        <input id="waNum" placeholder="Nomor WA tujuan (08xx / +62xx)" inputmode="tel">
+        <input id="waText" placeholder="Pesan">
+        <button>Buka di WhatsApp</button>
+      </form>
+      <button id="invite" type="button">Salin tautan undangan saya</button>
+      <div id="toolMsg" class="muted"></div>
+    </details>
     <ul id="chats"></ul>
   </aside>
   <main id="main">

@@ -40,12 +40,12 @@ function logout() {
 $('logout').onclick = logout;
 
 // ---- Start ----
-async function start() {
+let start = async function () {
   $('auth').hidden = true; $('app').hidden = false; $('meName').textContent = '@' + me;
   const d = await api('/api/chats');
   chats = new Map(d.chats.map((c) => [c.peer, { ...c, unread: 0 }]));
   renderChats(); connect();
-}
+};
 function connect() {
   ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/ws?token=' + token);
   ws.onmessage = (ev) => {
@@ -139,5 +139,32 @@ $('text').oninput = () => {
     lastTypingSent = Date.now(); ws.send(JSON.stringify({ type: 'typing', to: current }));
   }
 };
+
+// ---- Kirim ke WhatsApp lewat wa.me (memakai WhatsApp pengguna sendiri) ----
+function normalizePhone(raw) {
+  let n = String(raw).replace(/[^\d+]/g, '');
+  if (n.startsWith('+')) n = n.slice(1);
+  else if (n.startsWith('00')) n = n.slice(2);
+  else if (n.startsWith('0')) n = '62' + n.slice(1);
+  return /^\d{8,15}$/.test(n) ? n : null;
+}
+$('waForm').onsubmit = (e) => {
+  e.preventDefault();
+  const n = normalizePhone($('waNum').value);
+  if (!n) { $('toolMsg').textContent = 'Nomor tidak valid'; return; }
+  $('toolMsg').textContent = '';
+  window.open('https://wa.me/' + n + '?text=' + encodeURIComponent($('waText').value), '_blank', 'noopener');
+};
+$('invite').onclick = async () => {
+  const link = location.origin + '/?chat=' + encodeURIComponent(me);
+  try { await navigator.clipboard.writeText(link); $('toolMsg').textContent = 'Tautan disalin: ' + link; }
+  catch { $('toolMsg').textContent = link; }
+};
+
+// Tautan undangan: /?chat=username membuka chat dengan pengguna itu setelah login
+const invitedBy = new URLSearchParams(location.search).get('chat');
+if (invitedBy) history.replaceState(null, '', '/');
+const startOrig = start;
+start = async function () { await startOrig(); if (invitedBy && invitedBy !== me) openChat(invitedBy.toLowerCase()); };
 
 if (token && me) start().catch(() => {});

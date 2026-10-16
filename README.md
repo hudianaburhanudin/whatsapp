@@ -22,3 +22,6 @@ Untuk dipakai lewat internet, jalankan di server dan pasang HTTPS (mis. reverse 
 
 ## Catatan
 Pesan belum dienkripsi end-to-end dan penyimpanan memakai file JSON (cocok untuk skala kecil/prototipe).
+
+## Kirim ke WhatsApp tanpa nomor pengirim
+Menu "Kirim ke WhatsApp" membuat tautan `wa.me` sehingga pesan dikirim dari aplikasi WhatsApp pengguna sendiri (tanpa API, tanpa verifikasi). "Salin tautan undangan" menghasilkan `/?chat=username` agar teman bisa daftar dan langsung chat tanpa nomor.
