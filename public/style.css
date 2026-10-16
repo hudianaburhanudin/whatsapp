@@ -1,0 +1,45 @@
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#ece5dd;color:#111}
+[hidden]{display:none!important}
+.auth{display:flex;align-items:center;justify-content:center;height:100%;padding:16px}
+.card{background:#fff;padding:24px;border-radius:12px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 12px #0002}
+.card h1{margin:0;color:#075e54;font-size:22px}
+.muted{margin:0;color:#667;font-size:14px}
+input{padding:12px;border:1px solid #ccd;border-radius:8px;font-size:16px;width:100%}
+button{background:#128c7e;color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer}
+button:hover{background:#075e54}
+.err{color:#c0392b;font-size:13px;min-height:0}
+.card a{text-align:center;color:#128c7e;font-size:14px}
+.app{display:flex;height:100%;max-width:1200px;margin:0 auto;background:#fff}
+aside{width:340px;border-right:1px solid #ddd;display:flex;flex-direction:column;min-height:0}
+aside header,#room header{background:#075e54;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;justify-content:space-between}
+#room header{justify-content:flex-start}
+#room header small{display:block;font-size:12px;opacity:.8}
+#room header button,aside header button{background:#0003;padding:6px 10px}
+#back{display:none}
+.newchat{display:flex;gap:6px;padding:8px}
+.newchat input{padding:9px}
+#newErr{padding:0 10px}
+ul{list-style:none;margin:0;padding:0;overflow-y:auto;flex:1}
+li{padding:12px 14px;border-bottom:1px solid #f0f0f0;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+li:hover,li.active{background:#f2f2f2}
+li .top{display:flex;justify-content:space-between;gap:8px}
+li .name{font-weight:600}
+li .dot{color:#25d366}
+li .last{color:#667;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+li .badge{background:#25d366;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;align-self:flex-end}
+main{flex:1;display:flex;flex-direction:column;min-width:0;min-height:0}
+#room{display:flex;flex-direction:column;height:100%;min-height:0}
+.empty{margin:auto;color:#667;padding:20px;text-align:center}
+.msgs{flex:1;overflow-y:auto;padding:12px;background:#ece5dd;display:flex;flex-direction:column;gap:4px}
+.msg{max-width:78%;padding:7px 10px;border-radius:8px;background:#fff;align-self:flex-start;word-wrap:break-word;white-space:pre-wrap;box-shadow:0 1px 1px #0002}
+.msg.me{background:#dcf8c6;align-self:flex-end}
+.msg time{display:block;font-size:11px;color:#667;text-align:right;margin-top:2px}
+.send{display:flex;gap:6px;padding:8px;background:#f0f0f0}
+@media(max-width:700px){
+ aside{width:100%}
+ main{display:none;width:100%}
+ .app.chatting aside{display:none}
+ .app.chatting main{display:flex}
+ #back{display:inline-block}
+}

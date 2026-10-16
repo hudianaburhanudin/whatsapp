@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#075e54">
+<title>Chat Tanpa Nomor</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="auth" class="auth">
+  <form id="authForm" class="card">
+    <h1>Chat Tanpa Nomor</h1>
+    <p class="muted">Cukup username. Tanpa nomor telepon, tanpa email.</p>
+    <input id="u" placeholder="Username" autocomplete="username" autocapitalize="none" required>
+    <input id="p" type="password" placeholder="Password (min. 6 karakter)" autocomplete="current-password" required>
+    <div id="authErr" class="err"></div>
+    <button type="submit" id="authBtn">Masuk</button>
+    <a href="#" id="toggle">Belum punya akun? Daftar</a>
+  </form>
+</section>
+
+<section id="app" class="app" hidden>
+  <aside id="side">
+    <header><b id="meName"></b><button id="logout" title="Keluar">Keluar</button></header>
+    <form id="newChat" class="newchat">
+      <input id="peer" placeholder="Mulai chat: ketik username" autocapitalize="none">
+      <button>+</button>
+    </form>
+    <div id="newErr" class="err"></div>
+    <ul id="chats"></ul>
+  </aside>
+  <main id="main">
+    <div id="empty" class="empty">Pilih chat atau mulai chat baru lewat username</div>
+    <div id="room" hidden>
+      <header><button id="back">←</button><div><b id="peerName"></b><small id="peerStatus"></small></div></header>
+      <div id="msgs" class="msgs"></div>
+      <form id="send" class="send">
+        <input id="text" placeholder="Ketik pesan" autocomplete="off">
+        <button>Kirim</button>
+      </form>
+    </div>
+  </main>
+</section>
+<script src="app.js"></script>
+</body>
+</html>

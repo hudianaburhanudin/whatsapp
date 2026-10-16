@@ -1,0 +1,2 @@
+{ "name": "Chat Tanpa Nomor", "short_name": "Chat", "start_url": "/", "display": "standalone",
+  "background_color": "#ece5dd", "theme_color": "#075e54", "icons": [] }
